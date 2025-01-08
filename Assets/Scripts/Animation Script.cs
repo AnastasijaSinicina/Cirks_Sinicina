@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-
     Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,10 +12,11 @@ public class AnimationScript : MonoBehaviour
 
     public void RollDice()
     {
-        animator.SetBool("isRolling", true);
+        animator.SetBool("IsRolling", true);
     }
+
     public void StopRoll()
     {
-        animator.SetBool("isRolling", false);
+        animator.SetBool("IsRolling", false);
     }
 }

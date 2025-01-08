@@ -152,19 +152,19 @@ TextureImporter:
       name: Cloud1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 3188
-        width: 4075
-        height: 2273
+        x: 42
+        y: 3124
+        width: 4291
+        height: 2398
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fbfd1a9906ab31438e4e272f40c37c2
-      internalID: 1995472987
+      spriteID: 76243e16a76a99044b625d677e9aae9e
+      internalID: -21474366
       vertices: []
       indices: 
       edges: []
@@ -173,19 +173,19 @@ TextureImporter:
       name: Cloud2
       rect:
         serializedVersion: 2
-        x: 4811
-        y: 3250
-        width: 3054
-        height: 1490
+        x: 4766
+        y: 3172
+        width: 3136
+        height: 1885
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4186540a51060854cbdc60c03aafa795
-      internalID: -1035415986
+      spriteID: abc9329002647c1468f058f831d2f76e
+      internalID: 298855855
       vertices: []
       indices: 
       edges: []
@@ -194,19 +194,19 @@ TextureImporter:
       name: Cloud3
       rect:
         serializedVersion: 2
-        x: 342
-        y: 1213
-        width: 3062
-        height: 1085
+        x: 186
+        y: 1175
+        width: 3249
+        height: 1187
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5772c30904923d4d9d3428974acf358
-      internalID: -101958243
+      spriteID: 5a43a5f800f7d8741b348ccc222bd426
+      internalID: -683479154
       vertices: []
       indices: 
       edges: []
@@ -215,19 +215,19 @@ TextureImporter:
       name: Cloud4
       rect:
         serializedVersion: 2
-        x: 5018
-        y: 1374
-        width: 2535
-        height: 1160
+        x: 4958
+        y: 1255
+        width: 2631
+        height: 1420
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43370f2f88330a40b07aa5e72c03e4a
-      internalID: -478821636
+      spriteID: 151fa831134f28b43963e95470e2f726
+      internalID: -890656540
       vertices: []
       indices: 
       edges: []
@@ -236,19 +236,19 @@ TextureImporter:
       name: Cloud5
       rect:
         serializedVersion: 2
-        x: 2854
-        y: 186
-        width: 2515
-        height: 1038
+        x: 2825
+        y: 148
+        width: 2615
+        height: 1107
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f8cbf279f758a4ca774849eac23452
-      internalID: 2123891215
+      spriteID: 16b5dfdb9716d4a47adac4a5504871c4
+      internalID: -286296382
       vertices: []
       indices: 
       edges: []
@@ -264,11 +264,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cloud1: 1995472987
-      Cloud2: -1035415986
-      Cloud3: -101958243
-      Cloud4: -478821636
-      Cloud5: 2123891215
+      Cloud1: -21474366
+      Cloud2: 298855855
+      Cloud3: -683479154
+      Cloud4: -890656540
+      Cloud5: -286296382
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
