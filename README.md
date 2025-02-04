@@ -8,9 +8,9 @@ Unity 2.5D Circus Project
 - [X] Change cursor
 - [X] Change default skybox
 - [X] Add sounds
-- [ ] Add fade effect on load and close 
+- [X] Add fade effect on load and close 
 - [ ] Add settings
-- [ ] Add character selection screen
+- [X] Add character selection screen
 - [ ] Add throwable dice
 - [ ] Add leaderboard
 - [ ] Create Circus game
