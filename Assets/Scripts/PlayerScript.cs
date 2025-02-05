@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
         GameObject mainCharacter = Instantiate(playerPrefabs[characterIndex], spawnPoint.transform.position, Quaternion.identity);
         mainCharacter.GetComponent<NameScript>().SetPlayerName(PlayerPrefs.GetString("PlayerName"));
