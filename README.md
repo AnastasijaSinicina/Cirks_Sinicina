@@ -9,8 +9,13 @@ Unity 2.5D Circus Project
 - [X] Change default skybox
 - [X] Add sounds
 - [X] Add fade effect on load and close 
-- [ ] Add settings
+- [x] Add settings
 - [X] Add character selection screen
-- [ ] Add throwable dice
+- [x] Add throwable dice
+- [x] add 5 animated characters
+- [ ] Game logic with movement
+- [ ] Movemet with animation (waypoint or path finding)
+- [ ] Pause menu
 - [ ] Add leaderboard
 - [ ] Create Circus game
+- [ ] Version control GitHub repo
