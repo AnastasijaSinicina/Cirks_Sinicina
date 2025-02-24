@@ -6,13 +6,17 @@ using System;
 
 public class SceneChangeScript : MonoBehaviour
 {
-
     public FadeScript fadeScript;
     public SaveLoadScript saveLoadScript;
 
     public void CloseGame()
     {
         StartCoroutine(Delay("quit", -1, ""));
+    }
+    
+    public void GoToSettings()
+    {
+        StartCoroutine(Delay("settings", -1, ""));
     }
 
     public IEnumerator Delay(string command, int character, string name)
@@ -24,7 +28,6 @@ public class SceneChangeScript : MonoBehaviour
 
             if (UnityEditor.EditorApplication.isPlaying)
                 UnityEditor.EditorApplication.isPlaying = false;
-
             else
                 Application.Quit();
         }
@@ -34,8 +37,10 @@ public class SceneChangeScript : MonoBehaviour
             saveLoadScript.SaveGame(character, name);
             SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
+        else if (string.Equals(command, "settings", StringComparison.OrdinalIgnoreCase))
+        {
+            yield return fadeScript.FadeIn(0.1f);
+            SceneManager.LoadScene(2, LoadSceneMode.Single); // Переход в настройки
+        }
     }
-
-
-
 }

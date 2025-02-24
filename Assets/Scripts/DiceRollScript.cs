@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class DiceRollScript : MonoBehaviour
 {
@@ -13,6 +12,9 @@ public class DiceRollScript : MonoBehaviour
     public string diceFaceNum;
     public bool isLanded = false;
     public bool firstThrow = false;
+
+    // Flag to mark if the current dice result has been consumed for movement.
+    public bool hasBeenUsed = false;
 
     void Awake()
     {
@@ -29,21 +31,22 @@ public class DiceRollScript : MonoBehaviour
 
     void Update()
     {
+        // You can add your own landing-detection logic here.
+        // (e.g., check if rBody.velocity.magnitude < threshold and then set isLanded = true)
         if (rBody != null)
         {
-            if (Input.GetMouseButtonDown(0) && isLanded || Input.GetMouseButtonDown(0) && !firstThrow)
+            // On mouse click: if the dice is landed or if this is the first throw, roll it.
+            if (Input.GetMouseButtonDown(0) && (isLanded || !firstThrow))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.collider != null && hit.collider.gameObject == this.gameObject)
                     {
                         if (!firstThrow)
-                        {
                             firstThrow = true;
-                        }
+
                         RollDice();
                     }
                 }
@@ -53,6 +56,11 @@ public class DiceRollScript : MonoBehaviour
 
     public void RollDice()
     {
+        // Prepare for a new roll.
+        hasBeenUsed = false;
+        isLanded = false;
+        diceFaceNum = "?";
+
         rBody.isKinematic = false;
         forceX = Random.Range(0, maxRandForceVal);
         forceY = Random.Range(0, maxRandForceVal);
@@ -63,6 +71,8 @@ public class DiceRollScript : MonoBehaviour
 
     public void ResetDice()
     {
+        // This method is intended to reset the game at the start,
+        // not after each player's move.
         rBody.isKinematic = true;
         firstThrow = false;
         isLanded = false;

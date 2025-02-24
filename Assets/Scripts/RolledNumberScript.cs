@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class RolledNumberScript : MonoBehaviour
 {
-
     DiceRollScript diceRollScript;
     [SerializeField]
     TMP_Text rolledNumberText;
@@ -26,6 +24,8 @@ public class RolledNumberScript : MonoBehaviour
             else
                 rolledNumberText.text = "?";
         else
-            Debug.LogError("DiceRollScript not found in a scene!");
+            Debug.LogError("DiceRollScript not found in await scene");
+
     }
 }
+   

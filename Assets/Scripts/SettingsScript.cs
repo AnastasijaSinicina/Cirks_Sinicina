@@ -9,25 +9,24 @@ public class SettingsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public AudioSource audioSource;
     public AudioClip[] musicClips;
-    public Button saveButton; // Reference to Save Button
+    public Button saveButton;
+
+    private Resolution[] resolutions;
 
     void Start()
     {
-        // Load saved settings
-        LoadSettings();
-
-        // Set up volume slider
-        volumeSlider.onValueChanged.AddListener(SetVolume);
-
-        // Set up music dropdown
-        musicDropdown.onValueChanged.AddListener(ChangeMusic);
+        // Устанавливаем доступные разрешения
+        resolutions = Screen.resolutions;
+        PopulateResolutionDropdown();
         PopulateMusicDropdown();
 
-        // Set up resolution dropdown
-        resolutionDropdown.onValueChanged.AddListener(ChangeResolution);
-        PopulateResolutionDropdown();
+        // Загружаем настройки
+        LoadSettings();
 
-        // Set up Save button
+        // Подписки на события
+        volumeSlider.onValueChanged.AddListener(SetVolume);
+        musicDropdown.onValueChanged.AddListener(ChangeMusic);
+        resolutionDropdown.onValueChanged.AddListener(ChangeResolution);
         saveButton.onClick.AddListener(SaveSettings);
     }
 
@@ -38,14 +37,20 @@ public class SettingsMenu : MonoBehaviour
 
     void ChangeMusic(int index)
     {
-        audioSource.clip = musicClips[index];
-        audioSource.Play();
+        if (index >= 0 && index < musicClips.Length)
+        {
+            audioSource.clip = musicClips[index];
+            audioSource.Play();
+        }
     }
 
     void ChangeResolution(int index)
     {
-        Resolution resolution = Screen.resolutions[index];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        if (index >= 0 && index < resolutions.Length)
+        {
+            Resolution resolution = resolutions[index];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
     }
 
     void PopulateMusicDropdown()
@@ -60,22 +65,24 @@ public class SettingsMenu : MonoBehaviour
     void PopulateResolutionDropdown()
     {
         resolutionDropdown.options.Clear();
-        foreach (var res in Screen.resolutions)
+        foreach (var res in resolutions)
         {
             resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(res.width + " x " + res.height));
         }
     }
 
-    // Save settings to PlayerPrefs
     void SaveSettings()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
         PlayerPrefs.SetInt("MusicIndex", musicDropdown.value);
-        PlayerPrefs.SetInt("ResolutionIndex", resolutionDropdown.value);
+
+        Resolution currentRes = Screen.currentResolution;
+        PlayerPrefs.SetInt("ResWidth", currentRes.width);
+        PlayerPrefs.SetInt("ResHeight", currentRes.height);
+        
         PlayerPrefs.Save();
     }
 
-    // Load saved settings
     void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Volume"))
@@ -90,10 +97,20 @@ public class SettingsMenu : MonoBehaviour
             ChangeMusic(musicDropdown.value);
         }
 
-        if (PlayerPrefs.HasKey("ResolutionIndex"))
+        if (PlayerPrefs.HasKey("ResWidth") && PlayerPrefs.HasKey("ResHeight"))
         {
-            resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
-            ChangeResolution(resolutionDropdown.value);
+            int width = PlayerPrefs.GetInt("ResWidth");
+            int height = PlayerPrefs.GetInt("ResHeight");
+
+            for (int i = 0; i < resolutions.Length; i++)
+            {
+                if (resolutions[i].width == width && resolutions[i].height == height)
+                {
+                    resolutionDropdown.value = i;
+                    ChangeResolution(i);
+                    break;
+                }
+            }
         }
     }
 }
